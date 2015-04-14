@@ -49,20 +49,20 @@ int main(int argc, char** argv)
    delete iter;
    
    int h = bst->getHeight();
-   cout << h << endl;
+   cout << "Height: " << h << endl;
    
    bool bal = bst->isBalanced();
 	if(bal) cout << "Balanced\n";
 	else{
 		cout << "Not Balanced\n";
 	}
-/*
+
    BinaryTreeIterator<CD>* bst_iter = bst->iterator();
    bst_iter->setInorder();  //takes a snapshot of the data
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      cd->displayCD();
+      //cd->displayCD();
    }
    delete bst_iter;
 
@@ -71,22 +71,31 @@ int main(int argc, char** argv)
    //display whether the binary search tree is balanced (should not be balanced)
 
 
-
-
-
-
+	h = bst->getHeight();
+   cout << h << endl;
+   
+   bal = bst->isBalanced();
+	if(bal) cout << "Balanced\n";
+	else{
+		cout << "Not Balanced\n";
+	}
 
 
    //create a minimum height binary search tree
+
    BinarySearchTree<CD>* min_bst = bst->minimize();
+
    bst_iter = min_bst->iterator();
 
    //make sure that an inorder traversal gives sorted order
    bst_iter->setInorder();  //takes a snapshot of the data
+  
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      cd->displayCD();
+      //cd->displayCD();
+	  //(cd->getKey())->displayString();
+	  cout << endl;
    }
    delete bst_iter;
 
@@ -94,16 +103,20 @@ int main(int argc, char** argv)
    //display the height of the binary search tree (should be minimum height)
    //display whether the binary search tree is balanced (should be balanced)
 
-
-
-
-
-
-
-
+h = min_bst->getHeight();
+   cout << h << endl;
+   
+   bal = min_bst->isBalanced();
+  
+	if(bal) cout << "Balanced\n";
+	else{
+		cout << "Not Balanced\n";
+	}
 
    //create a complete binary search tree
+ 
    BinarySearchTree<CD>* complete_bst = bst->minimizeComplete();
+ 
    delete bst;
 
    //make sure that an inorder traversal gives sorted order
@@ -112,7 +125,9 @@ int main(int argc, char** argv)
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      cd->displayCD();
+      //cd->displayCD();
+	  //(cd->getKey())->displayString();
+	  cout << endl;
    }
    delete bst_iter;
 
@@ -120,16 +135,19 @@ int main(int argc, char** argv)
    //display the height of the complete binary search tree (should be minimum height)
    //display whether the binary search tree is balanced (should be balanced)
 
-
-
-
-
-
+	h = complete_bst->getHeight();
+   cout << h << endl;
+   
+   bal = complete_bst->isBalanced();
+	if(bal) cout << "Balanced\n";
+	else{
+		cout << "Not Balanced\n";
+	}
 
 
 
    delete complete_bst;
-*/
+
    deleteCDs(cds);
    delete cds;
    return 0;
