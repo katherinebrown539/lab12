@@ -1,3 +1,10 @@
+/*
+
+	Katherine (Katie) Brown and Duane Vick
+	CSC 2111 Lab 12
+	https://github.com/kebrown46/lab12
+
+*/
 #include "BinarySearchTree.h"
 #include "BinaryTreeIterator.h"
 #include "ListArray.h"
@@ -62,7 +69,7 @@ int main(int argc, char** argv)
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      //cd->displayCD();
+      cd->displayCD();
    }
    delete bst_iter;
 
@@ -93,9 +100,8 @@ int main(int argc, char** argv)
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      //cd->displayCD();
-	  //(cd->getKey())->displayString();
-	  cout << endl;
+      cd->displayCD();
+	 
    }
    delete bst_iter;
 
@@ -125,9 +131,8 @@ h = min_bst->getHeight();
    while(bst_iter->hasNext())
    {
       CD* cd = bst_iter->next();
-      //cd->displayCD();
-	  //(cd->getKey())->displayString();
-	  cout << endl;
+      cd->displayCD();
+
    }
    delete bst_iter;
 
@@ -143,8 +148,6 @@ h = min_bst->getHeight();
 	else{
 		cout << "Not Balanced\n";
 	}
-
-
 
    delete complete_bst;
 

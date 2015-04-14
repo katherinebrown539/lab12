@@ -1,3 +1,10 @@
+/*
+
+	Katherine (Katie) Brown and Duane Vick
+	CSC 2111 Lab 12
+	https://github.com/kebrown46/lab12
+
+*/
 #include <gtkmm.h>
 #include "BinarySearchTree.h"
 #include "BinaryTreeIterator.h"

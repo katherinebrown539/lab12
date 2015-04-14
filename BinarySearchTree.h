@@ -1,3 +1,10 @@
+/*
+
+	Katherine (Katie) Brown and Duane Vick
+	CSC 2111 Lab 12
+	https://github.com/kebrown46/lab12
+
+*/
 #if !defined (BINARYSEARCHTREE_H)
 #define BINARYSEARCHTREE_H
 
@@ -8,10 +15,6 @@
 #include "Line.h"
 #include "Drawable.h"
 using CSC2110::String;
-
-#include <iostream> 
-using namespace std;
-
 
 template < class T >
 class BinarySearchTree : public Drawable
