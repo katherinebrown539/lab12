@@ -68,7 +68,8 @@ class BinarySearchTree : public Drawable
 template < class T >
 int BinarySearchTree<T>::getHeight()
 {
-   //DO THIS
+	TreeNode<T>* root_node = getRootNode();
+   return getHeight(root_node);
 
 }
 
@@ -76,8 +77,29 @@ template < class T >
 int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
 {
    //DO THIS
-
-
+	if(tNode->getLeft() == 0 && tNode->getRight() == 0)
+	{
+		return 1;
+	}
+	else if(tNode->getLeft() == 0 && tNode->getRight() != 0)
+	{
+		return getHeight(tNode->getRight()) + 1;
+	}
+	else if(tNode->getLeft() != 0 && tNode->getRight() == 0)
+	{
+		return getHeight(tNode->getLeft()) + 1;
+	}
+	else
+	{
+		int left_height = getHeight(tNode->getLeft());
+		int right_height = getHeight(tNode->getRight());
+		
+		if(left_height >= right_height) return left_height;
+		else
+		{
+			return right_height;
+		}
+	}
 
 }
 
@@ -85,6 +107,8 @@ template < class T >
 bool BinarySearchTree<T>::isBalanced()
 {
    //DO THIS
+   TreeNode<T>* root_node = getRootNode();
+   return isBalanced(root_node);
 
 }
 
@@ -138,7 +162,7 @@ T** BinarySearchTree<T>::toArray()
 
    return items;
 }
-
+/*
 template < class T >
 BinarySearchTree<T>* BinarySearchTree<T>::minimizeComplete()
 {
@@ -200,7 +224,7 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
 
    }
 }
-
+*/
 template < class T >
 void BinarySearchTree<T>::remove(String* sk)
 {

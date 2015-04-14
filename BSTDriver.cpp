@@ -23,10 +23,16 @@ void deleteCDs(ListArray<CD>* list)
    delete iter;
 }
 
-int main()
+int main(int argc, char** argv)
 {
    //the unsorted ListArray of cds
-   ListArray<CD>* cds = CD::readCDs("cds.txt");
+   const char* cd;
+   if(argc >= 2) cd = argv[1];
+   else
+   {
+	   cd = "cds.txt";
+   }
+   ListArray<CD>* cds = CD::readCDs(cd);
    int numItems = cds->size();
    cout << numItems << endl;
    cout << endl;
@@ -41,7 +47,10 @@ int main()
       bst->insert(cd);
    }
    delete iter;
-
+   
+   int h = bst->getHeight();
+   cout << h << endl;
+/*
    BinaryTreeIterator<CD>* bst_iter = bst->iterator();
    bst_iter->setInorder();  //takes a snapshot of the data
    while(bst_iter->hasNext())
@@ -114,7 +123,7 @@ int main()
 
 
    delete complete_bst;
-
+*/
    deleteCDs(cds);
    delete cds;
    return 0;
