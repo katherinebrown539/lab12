@@ -14,7 +14,13 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-   ListArray<CD>* cds = CD::readCDs("cds.txt");
+   const char* cd;
+   if(argc >= 2) cd = argv[1];
+   else
+   {
+	   cd = "cds.txt";
+   }
+   ListArray<CD>* cds = CD::readCDs(cd);
    int num_items = cds->size();
    cout << num_items << endl;
 

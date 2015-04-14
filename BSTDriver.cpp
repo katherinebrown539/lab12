@@ -36,7 +36,7 @@ int main(int argc, char** argv)
    int numItems = cds->size();
    cout << numItems << endl;
    cout << endl;
-
+	
    //test the binary search tree
    //insert all of the cds
    ListArrayIterator<CD>* iter = cds->iterator();
@@ -50,6 +50,12 @@ int main(int argc, char** argv)
    
    int h = bst->getHeight();
    cout << h << endl;
+   
+   bool bal = bst->isBalanced();
+	if(bal) cout << "Balanced\n";
+	else{
+		cout << "Not Balanced\n";
+	}
 /*
    BinaryTreeIterator<CD>* bst_iter = bst->iterator();
    bst_iter->setInorder();  //takes a snapshot of the data

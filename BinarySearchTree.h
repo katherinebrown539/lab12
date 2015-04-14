@@ -1,12 +1,17 @@
 #if !defined (BINARYSEARCHTREE_H)
 #define BINARYSEARCHTREE_H
 
+#include <cmath>
 #include "BinaryTreeIterator.h"
 #include "TreeNode.h"
 #include "Text.h"
 #include "Line.h"
 #include "Drawable.h"
 using CSC2110::String;
+
+#include <iostream> 
+using namespace std;
+
 
 template < class T >
 class BinarySearchTree : public Drawable
@@ -94,10 +99,10 @@ int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
 		int left_height = getHeight(tNode->getLeft());
 		int right_height = getHeight(tNode->getRight());
 		
-		if(left_height >= right_height) return left_height;
+		if(left_height >= right_height) return left_height+1;
 		else
 		{
-			return right_height;
+			return right_height+1;
 		}
 	}
 
@@ -116,8 +121,44 @@ template < class T >
 bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
 {
    //DO THIS
+   TreeNode<T>* left_subtree = tNode->getLeft();
+   TreeNode<T>* right_subtree = tNode->getRight();
+   
+   int left_height; 
+   int right_height; 
+   
+   if(left_subtree == 0 && right_subtree == 0) return true; //obviously balanced because we have no children
+   else if(left_subtree == 0 && right_subtree != 0)
+   {
+	   cout << "Left is NULL\n";
+	   right_height = getHeight(right_subtree);
+	   left_height = 0;
+   }
+   else if(left_subtree != 0 && right_subtree == 0)
+   {
+	   cout << "Right is NULL\n";
+	   left_height = getHeight(left_subtree);
+	   right_height = 0;
+   }
+   else
+   {
+	   cout << "Neither are NULL\n";
+		left_height = getHeight(left_subtree);
+		right_height = getHeight(right_subtree);
+   }
 
-
+   int height_diff = abs(left_height - right_height);
+   cout << "The difference in height is: " << height_diff << endl;
+   if(height_diff <= 1)
+   {
+	   bool left = isBalanced(tNode->getLeft());
+	   if(!left) return false;
+	   bool right = isBalanced(tNode->getRight());
+	   if(!right) return false;
+	   
+	   return true;
+   }
+   else{ return false; }
 
 
 }
@@ -162,7 +203,7 @@ T** BinarySearchTree<T>::toArray()
 
    return items;
 }
-/*
+
 template < class T >
 BinarySearchTree<T>* BinarySearchTree<T>::minimizeComplete()
 {
@@ -224,7 +265,7 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
 
    }
 }
-*/
+
 template < class T >
 void BinarySearchTree<T>::remove(String* sk)
 {
