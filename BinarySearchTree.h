@@ -263,7 +263,7 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
 			k_left =  log(mid-first+1) * log_factor; //log base 2 of the number of items to the left of mid (including mid)
 			int_k_left =  (int) (k_left + 0.5);     //same as above but rounded
 			k_right = log(last - mid+1) * log_factor;
-			int_k_right = (int) (k_left + 0.5);
+			int_k_right = (int) (k_right + 0.5);
 
          }
       }
